@@ -1,0 +1,33 @@
+
+.dashboard-page {
+    
+width: 100%;    
+        
+}
+.overall-stats{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr ;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 15px;
+    }
+.stats-item{
+    background-color: var(--neutral);
+    padding: 15px;
+    border-radius: 15px;
+    color: var(--var1);
+   
+}
+
+.overall-stats-containers{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+    grid-gap:10px;
+}
+.chart{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: var(--neutral);
+    border-radius: 10px;
+}
