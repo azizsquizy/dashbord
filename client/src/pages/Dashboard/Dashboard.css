@@ -7,8 +7,8 @@ width: 100%;
 .overall-stats{
     display: grid;
     grid-template-columns: 1fr 1.5fr ;
-    grid-template-rows: repeat(2, 1fr);
     grid-gap: 15px;
+    margin-bottom: 40px;
     }
 .stats-item{
     background-color: var(--neutral);
@@ -16,6 +16,9 @@ width: 100%;
     border-radius: 15px;
     color: var(--var1);
    
+}
+.color1{
+    width: 30px;
 }
 
 .overall-stats-containers{
@@ -30,4 +33,24 @@ width: 100%;
     grid-template-rows: 1fr;
     background-color: var(--neutral);
     border-radius: 10px;
+    
+}
+.users{
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    grid-gap:20px;
+}
+.item-chart{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.sales-chart{
+    display: flex;
+    background-color: var(--neutral);
+    border-radius: 20px;
+    padding: 10px;
+    flex-direction: column;
 }

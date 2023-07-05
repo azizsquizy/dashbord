@@ -5,7 +5,7 @@
 .pages{
     padding: 20px 40px;
     display: flex;
-   
+   width: 100%;
     flex-direction: column;
     
 }

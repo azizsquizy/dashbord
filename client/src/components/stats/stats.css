@@ -1,0 +1,16 @@
+.stats_table{
+    background-color: var(--neutral);
+    border-radius: 20px;
+    padding: 20px;
+}
+.ReactTable .rt-thead .rt-th {
+    padding: 10px;
+    background-color: var(--neutral);
+    color: var(--var3);
+    font-weight: bold;
+  }
+  
+.ReactTable .rt-tbody .rt-td {
+  border-bottom: 1px solid;
+  padding: 10px;
+}  

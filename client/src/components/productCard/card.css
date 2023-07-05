@@ -1,0 +1,19 @@
+.card{
+    background-color: var(--neutral);
+    padding: 15px;
+    border-radius: 20px;
+}
+.card p{
+    color: var(--var3);
+}
+.product-info h3{
+    color: var(--var4);
+}
+.show-more{
+    border: none;
+    background-color: #0e1331;
+    color: #fff;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}

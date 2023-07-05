@@ -7,6 +7,13 @@ import * as dotenv from "dotenv"
 import bodyParser from "body-parser"
 import clientRouter from "./routes/client.js"
 import { Router } from "./routes/sales.js"
+import * as data from "./data/index.js"
+import User from "./models/User.js"
+import Product from "./models/Product.js"
+import OverallStat from "./models/OverallStats.js"
+import AffiliateStat from "./models/Stats.js"
+import Transaction from "./models/Transaction.js"
+import ProductStat from "./models/ProductState.js"
 dotenv.config()
 
 const app = express()
@@ -29,5 +36,9 @@ mongoose.connect(process.env.MONGO_KEY,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
 }).then(console.log("DB Started"))
+
+
+// AffiliateStat.insertMany(data.dataAffiliateStat)
+ 
 
 app.listen(process.env.PORT,console.log("server STARTED"))
