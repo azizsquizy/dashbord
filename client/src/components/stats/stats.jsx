@@ -13,7 +13,7 @@ const SalesTable = () => {
 
   const fetchSalesData = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/users'); // Replace with your API endpoint to fetch sales data
+      const response = await axios.get('http://localhost:3001/users/stats'); // Replace with your API endpoint to fetch sales data
       setSalesData(response.data);
       setLoading(false);
     } catch (error) {
@@ -36,12 +36,11 @@ const SalesTable = () => {
     {
       Header: 'ID',
       accessor: '_id',
-      style:{width:"30%"}
+      
     },
     {
       Header: 'Sale User ID',
       accessor: 'userId._id',
-      style: {  overflowWrap: 'break-word' },
     },
     {
       Header: 'Created At',

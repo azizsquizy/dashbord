@@ -1,0 +1,25 @@
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 50%;
+    background-color: var(--neutral);
+    border: none;
+}
+.form-control h3{
+    color: white;
+
+}
+.form-control select{
+    padding: 10px 25px;
+  background-color: var(--var3);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.overview{
+  
+   
+}

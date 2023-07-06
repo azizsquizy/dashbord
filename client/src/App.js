@@ -7,13 +7,13 @@ import Dashboard from 'pages/Dashboard/Dashboard'
 import Product from 'pages/Product/Product'
 import Custmoers from 'pages/Customers/Custmoers'
 import Transactions from 'pages/Transactions/Transactions'
-import Geography from 'pages/Geography/Geography'
 import Overview from 'pages/Overview/Overview'
 import Daily from 'pages/Daily/Daily'
 import Monthly from 'pages/Monthly/Monthly'
 import Admin from 'pages/Admin/Admin'
 import Breakdown from 'pages/Breakdown/Breakdown'
 import Performance from 'pages/Performance/Performance'
+import Geography from 'pages/Geography/Geography'
 const App = () => {
   const [sidebar,setSidebar] = useState(false)
   const handleState =(state)=>{
@@ -31,8 +31,8 @@ const App = () => {
                   <Route path='/products' element={<Product/>}/>
                   <Route path='/customers' element={<Custmoers/>}/>
                   <Route path='/transactions' element={<Transactions/>}/>
-                  <Route path='/geography' element={<Geography/>}/>
                   <Route path='/overview' element={<Overview/>}/>
+                  <Route path='/geography' element={<Geography/>}/>
                   <Route path='/daily' element={<Daily/>}/>
                   <Route path='/monthly' element={<Monthly/>}/>
                   <Route path='/breakdown' element={<Breakdown/>}/>

@@ -26,6 +26,7 @@ const Transactions = () => {
     {
       Header: 'ID',
       accessor: '_id',
+      flex:2
       
     },
     {

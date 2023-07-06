@@ -39,4 +39,15 @@ export const fetchOverAllStats = async () => {
     const data = await response.json();
     return data;
   }
+
+  export const fetchGeography = async () => {
+    const response = await fetch("http://localhost:3001/geography",{
+        method:"GET",
+        headers:{
+            "Content-type":"application/json"
+        }
+    });
+    const data = await response.json();
+    return data;
+  }
   

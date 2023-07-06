@@ -6,19 +6,19 @@ import "./Header.css"
 const Header = ({profile,onSidebar}) => {
     const [state,setState] = useState(false)
   return (
-    <div className='header'>
+    <div className='header' style={{marginBottom:"40px"}}>
             <div className='icon-search'>
                     <AiOutlineSearch className='search-icon'/>
                     <GiHamburgerMenu onClick={()=>{setState(!state); onSidebar(state)}}/>
                     <input type='text' placeholder='Search...'/>
             </div>
-            <div className='profile'>
+            {/* <div className='profile'>
                 <FiSettings/>
                 <div className='profile-info'>
                             <h5>Hosni Garfala</h5>
                             <p>ybi3 fil batikh</p>
                 </div>
-            </div>
+            </div> */}
     </div>
   )
 }

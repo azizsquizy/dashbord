@@ -4,6 +4,7 @@ import ProductStat from "../models/ProductState.js"
 import AffiliateStat from "../models/Stats.js"
 import Transaction from "../models/Transaction.js"
 import User from "../models/User.js"
+import getCountryIso3 from "country-iso-2-to-3"
 
 export const getOverAllStats = async(req,res)=>{
     try{
@@ -52,5 +53,30 @@ export const getTransactions =async (req,res)=>{
         res.json(err)
     }
 
+
+}
+
+
+export const getGeography = async (req,res)=>{
+        try{
+                const users = await User.find()
+                const mappedLocations = users.reduce((acc,{country})=>{
+                            const newCountry = getCountryIso3(country) 
+                            if(!acc[newCountry]){
+                                acc[newCountry] = 0;
+                            }
+                            acc[newCountry]++;
+                            return acc
+                },{})     
+                // res.json(mappedLocations)  
+                const formattedLocations = Object.entries(mappedLocations).map(
+                    ([country,count])=>{
+                        return {id:country,value:count}
+                    }
+                )
+                        res.json(formattedLocations)
+        }catch(error){
+            res.json({error:error})
+        }
 }
 
