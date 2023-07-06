@@ -1,13 +1,8 @@
-import React from 'react'
-import { useEffect,useState } from 'react';
-import DatePicker from "react-datepicker";
+import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import { fetchOverAllStats } from 'calls';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Line } from 'react-chartjs-2';
-import moment from 'moment/moment';
-import "react-datepicker/dist/react-datepicker.css";
-import { Chart, CategoryScale, LinearScale, PointElement, ArcElement } from 'chart.js/auto';
-Chart.register(CategoryScale, LinearScale, PointElement, ArcElement);
-
 
 const Daily = () => {
   const [loading, setLoading] = useState(true);
@@ -31,20 +26,19 @@ const Daily = () => {
     fetchData();
   }, []);
 
-  const filterDailyData = (data) => {
-    if (!data || !data.dailyData) return [];
-  
-    return data[0].dailyData.filter((entry) => {
-      const currentDate = moment(entry.date, 'YYYY-MM-DD');
-      return currentDate.isBetween(startDate, endDate, 'day', '[]');
+  const filterDailyData = (dailyData) => {
+    if (!dailyData) return [];
+
+    return dailyData.filter((entry) => {
+      const currentDate = new Date(entry.date); // Convert date string to Date object
+      return currentDate >= startDate && currentDate <= endDate;
     });
   };
-  
 
   const createChartData = (filteredData) => {
     if (!filteredData) return null;
 
-    const dates = filteredData.map((entry) => entry.date);
+    const dates = filteredData.map((entry) => new Date(entry.date)); // Convert date strings to Date objects
     const salesData = filteredData.map((entry) => entry.totalSales);
     const unitsData = filteredData.map((entry) => entry.totalUnits);
 
@@ -52,15 +46,15 @@ const Daily = () => {
       labels: dates,
       datasets: [
         {
-          label: 'Sales',
-          data: calculateIncrementalValues(salesData),
+          label: 'Total Sales',
+          data: salesData,
           borderColor: 'rgba(255, 99, 132, 1)',
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           fill: true,
         },
         {
-          label: 'Units',
-          data: calculateIncrementalValues(unitsData),
+          label: 'Total Units',
+          data: unitsData,
           borderColor: 'rgba(54, 162, 235, 1)',
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           fill: true,
@@ -69,28 +63,17 @@ const Daily = () => {
     };
   };
 
-  const calculateIncrementalValues = (data) => {
-    if (!data || data.length === 0) return [];
-
-    const incrementalValues = [data[0]];
-    for (let i = 1; i < data.length; i++) {
-      incrementalValues.push(data[i] - data[i - 1]);
-    }
-
-    return incrementalValues;
-  };
-
-  const filteredData = filterDailyData(data);
+  const filteredData = filterDailyData(data?.[0]?.dailyData);
+  const chartData = createChartData(filteredData);
 
   return (
     <div className='daily'>
-      <div>
+      <div className='date-picker'>
         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
       </div>
       <div className='chart'>
-        {data && (
-          <Line data={createChartData(filteredData)} options={{ responsive: true }} />
-        )}
+        {chartData && <Line data={chartData} options={{ responsive: true }} />}
       </div>
     </div>
   );
